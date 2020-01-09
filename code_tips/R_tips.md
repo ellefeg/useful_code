@@ -1,10 +1,20 @@
+# useful packages
+```r
+library(ggplot2)
+library(RColorBrewer) # colour palettes (`paired` is good for lots of samples)
+library(wesanderson) # colour palettes
+library(dplyr) #for the mutate function
+```
+
 # Working with real files
 
-Getting files into R
+Getting files into R:
+
 ```r
 # tell R where a file is
 myfilepath <- "/path/to/file"
 data <- read.delim(myfilepath, header = T, comment.char = "", row.names = 1, stringsAsFactors = F, header = TRUE)
+
 # convert missing data (NAs) to 0
 data <- data[apply(data, 1, function(x) sum(is.na(x)))  == 0,]
 ```
@@ -16,23 +26,33 @@ write.table(data, file = "/path/to/file.tab", sep = "\t", quote = F)
 
 # Look at an R object
 
+Call rows and columns: `data[rows, cols]`
+
 ```r
+
 # what sort of data is it?
 typeof(data)
+
 # how many rows?
 ncol(data)
+
 # do we have 7 rows?
 ncol(data) == 7
+
 # look at the top 3 rows (plus colnames)
 data[1:3,]
 # look at the first 3 columns (plus rownames)
 data[,1:3]
+
 # look at a specific column
 data$firstcolname
+
 # look at a specific value in a specific column
 data$firstcolname[2]
+
 # compare this value to an expectation
 data$firstcolname[2] > 1
+
 # how many rows are less than 0.05?
 sum(df$column < 0.05)
 ```
@@ -41,20 +61,23 @@ sum(df$column < 0.05)
 ```r
 # pull out a smaller part of a table
 datasmall <- data[1:3,1:3]
+
 # convert to a matrix
 datasmallM <- as.matrix(datasmall)
+
 # calculate row-wise mean (requires matrix)
-apply(datasmallM, 1, function(x) mean(x, na.rm=T))
+apply(data, 1, function(x) mean(x, na.rm=T))
 ## and convert back to a matrix
-as.matrix(apply(datasmallM, 1, function(x) mean(x, na.rm=T)))
+as.matrix(apply(data, 1, function(x) mean(x, na.rm=T)))
+
 # rename column data$stupidname to data$goodname
 colnames(data)[colnames(data)=="stupidname"] <- "goodname"
 # rename all columns
 colnames(avecounts_AAD3) <- c("name", "self", "nonself")
+
 # remove a column
 data$badColumn <- NULL
-# calculate a log
-log(datasmall)
+
 # merge two dataframes
 merge(data1, data2, by = "sharedColID")
 ## merge by rownames
@@ -63,10 +86,8 @@ merge(data1, data2, by=0)
 rownames(de)=de$Row.names
 ```
 
-A useful blog post about how you can (and can't) modify R objects by running functions on them: https://stackoverflow.com/questions/15497947/call-by-reference-in-r-using-function-to-modify-an-object
-
 Filter a dataframe to only keep rows that equal a given value in a given column
-```{r}
+```r
 table[table$col==val,]
 # or if col is a variable
 table[table[[col]]==val,]
@@ -129,25 +150,32 @@ for (i in 1:length(myobjects)) {
   print(l)
 }
 
-# useful packages
+# Maths
+
 ```r
-library(ggplot2)
-library(RColorBrewer) # colour palettes (`paired` is good for lots of samples)
-library(wesanderson) # colour palettes
-library(dplyr) #for the mutate function
+# calculate a log
+log(datasmall)
 ```
 
-# useful resources
+# Writing functions
 
-[the ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html#1) - shows step-by-step construction and modification of ggplot graphs
+A [useful blog post](https://stackoverflow.com/questions/15497947/call-by-reference-in-r-using-function-to-modify-an-object) about how you can (and can't) modify R objects by running functions on them
 
-Dummy R data, see all pre-installed datasets by typing `data()`. Load a given dataset by typing `data(DatasetName)`. WorldPhones is a nice small one.
+```
+function.name <- function(arg1, arg2, arg3=2, ...) {
+  # do stuff
+  # return values
+}
+```
+
 
 # graphing
 
+[the ggplot flipbook](https://evamaerey.github.io/ggplot_flipbook/ggplot_flipbook_xaringan.html#1) - shows step-by-step construction and modification of ggplot graphs
+
 [R Graph Gallery](https://www.r-graph-gallery.com/), a website with templates/tutorials for different types of R graph
 
-[A useful pagge about plotitng multiple grarpphs . on the sae axis](https://www.r-bloggers.com/ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/)
+[A useful pagge about plotitng multiple graphs on the same axis](https://www.r-bloggers.com/ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/)
 
 A very basic scatterplot in ggplots:
 ```{r}
@@ -232,3 +260,8 @@ addgrids3d(pca$x[,1:3], grid = c("xy", "xz", "yz"))
 
 # Replicating historical plots with ggplots
 https://www.statswithmatt.com/post/ggplot2-meets-w-e-b-du-bois/
+
+
+# useful resources
+
+Dummy R data, see all pre-installed datasets by typing `data()`. Load a given dataset by typing `data(DatasetName)`. WorldPhones is a nice small one.
