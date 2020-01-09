@@ -1,0 +1,21 @@
+This code comes from Tahsha Say, email to lfgrice@gmail.com 24.12.18 based on the draft manuscript I read for her in December 2018.
+
+########################################################
+# ggplot + elipses
+########################################################
+
+# http://ggplot2.tidyverse.org/reference/stat_ellipse.html
+# The default "t" assumes a multivariate t-distribution
+
+(pcaplot <- ggplot(data, aes(PC1, PC2, color=treatment)) + ## to change
+geom_point(size=1)+ 
+geom_text(aes(label=names), size=2.5, hjust=0.25, vjust=-0.6, show.legend = F) + # textual annotations http://docs.ggplot2.org/current/geom_text.html
+xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+ggtitle("Principal Components") +
+theme_bw() # White background with grid lines
++
+stat_ellipse(type = "t")
+)
+
+ggsave(pcaplot,file="TS1015_2016.10.31_PCA_rldt1_label_treatment_elipse_t_ggplot.pdf")

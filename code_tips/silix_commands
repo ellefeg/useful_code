@@ -1,0 +1,43 @@
+# Silix commands
+
+**Match rows where data values = a given value (not counting rownames)**
+
+```
+# Find rows with values of 1 (1:1... orthologues)
+egrep '^\S+(\s+1)+$' file
+
+# Find rows with values of 0 or 1
+egrep '^\S+(\s+[01])+$' file
+```
+
+**Match rows without data values = 0**
+
+That is, find non-zero homologues
+
+```
+egrep '^\S+(\s+[1-9][0-9]*)+$' file
+```
+
+**Convert all numbers to 1**
+
+That is, convert counts into presence/absence
+
+```
+sed 's/\t[1-9][0-9]*/\t1/g' file
+```
+
+**Sum Col2 to end**
+
+That is, print rowname and sum of row. Note, this will include any header rows.
+
+```
+awk '{for (i=2; i<=NF; i++) t+=$i; print $1, t; t=0}' file
+```
+
+**Remove leading whitespace**
+
+Such as that produced by `uniq -c`
+
+```
+sed -e 's/^[ \t]*//' file
+```
