@@ -1,4 +1,15 @@
-# useful packages
+# packages
+
+```r
+#Check if you have loaded a certain package in your environment
+"dplyr" %in% tolower(my_packages)
+
+# free up unused memory and report memory usage
+gc()
+```
+
+
+## Some useful packages
 ```r
 library(ggplot2)
 library(RColorBrewer) # colour palettes (`paired` is good for lots of samples)
@@ -55,6 +66,11 @@ data$firstcolname[2] > 1
 
 # how many rows are less than 0.05?
 sum(df$column < 0.05)
+
+# are two things the same?
+identical(x, y)
+myspecies <- mouse
+identical(myspecies, "horse")
 ```
 
 # Manipulate a dataset
