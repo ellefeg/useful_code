@@ -35,6 +35,13 @@ Getting files out of R:
 write.table(data, file = "/path/to/file.tab", sep = "\t", quote = F) 
 ```
 
+Checks if your outdir ends in / and adds one if not:
+```r
+if (endsWith(outdir, "/") == FALSE) {
+  outdir <- paste0(outdir, "/", sep="")
+}
+```
+
 # Look at an R object
 
 Call rows and columns: `data[rows, cols]`
