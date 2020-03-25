@@ -51,3 +51,8 @@ for (b_pkg in bioc_packages) {
 for (r_pkg in r_packages) {
   baseRpkgTest(r_pkg)
 }
+
+# checks if your outdir ends in / and adds one if not
+if (endsWith(outdir, "/") == FALSE) {
+  outdir <- paste0(outdir, "/", sep="")
+}
