@@ -17,6 +17,11 @@ library(wesanderson) # colour palettes
 library(dplyr) #for the mutate function
 ```
 
+Or to load a library (very) quietly
+```r
+suppressPackageStartupMessages(library(ggplot2, quietly = TRUE))
+```
+
 # Working with real files
 
 Getting files into R:
