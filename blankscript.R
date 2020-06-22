@@ -56,3 +56,9 @@ for (r_pkg in r_packages) {
 if (endsWith(outdir, "/") == FALSE) {
   outdir <- paste0(outdir, "/", sep="")
 }
+
+
+
+
+
+sessionInfo()
