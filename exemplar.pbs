@@ -1,0 +1,17 @@
+# ------------------------------------------------------------------
+# Author: Laura Grice
+# Date: 15 June 2020
+# Title: exemplar.pbs
+# Goal: blah
+# Usage: qsub exemplar.pbs
+# ------------------------------------------------------------------
+
+# put this at the start of all PBS scripts
+#PBS -A UQ-IMB #accounting code, you need this on Tinaroo, if this doesn't work type "groups", pick the most relevant group, and put it here #Don't think you need for Delta?
+#PBS -S /bin/bash #if you're running a bash script
+#PBS -l select=1:ncpus=16:mem=120GB #change this according to the estimated memory/computer usage required
+#PBS -N sample1 #whatever you want to call your job, recommend you change between jobs if running simultaneously so you can keep track of them all
+#PBS -l walltime=10:00:00 # change this according to the time your job will take
+
+# CODE
+# put your code here
