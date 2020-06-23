@@ -60,5 +60,10 @@ if (endsWith(outdir, "/") == FALSE) {
 
 
 
+# ------------------------------------------------------------------
+# SESSION INFO
+# ------------------------------------------------------------------
 
+sink(paste0(outdir, sampleID, "_sessionInfo.txt"))
 sessionInfo()
+sink()
