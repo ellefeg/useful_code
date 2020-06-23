@@ -4,7 +4,7 @@
 # Date: 
 # Title: 
 # Goal: 
-# Usage: Rscript enrichment.R {analysisID} {genesOfInterest} {backgroundGenes} {annotations} {descriptions}
+# Usage: Rscript enrichment.R {sampleID} {genesOfInterest} {backgroundGenes} {annotations} {descriptions}
 # ------------------------------------------------------------------
 # USAGE
 # ------------------------------------------------------------------
@@ -17,11 +17,11 @@ args <- commandArgs(trailingOnly=TRUE)
 
 if (length(args) != 5) {
   cat("ERROR: 5 arguments expected\n")
-  cat("example: Rscript pfam_enrichment.R {analysisID} {genesOfInterest} {backgroundGenes} {annotations} {descriptions}\n")
+  cat("example: Rscript pfam_enrichment.R {sampleID} {genesOfInterest} {backgroundGenes} {annotations} {descriptions}\n")
   quit()
 }
 
-analysisID <- args[1]
+sampleID <- args[1]
 myInterestGenes <- args[2]
 myBackgroundGenes <- args[3]
 myAnnotations <- args[4]
