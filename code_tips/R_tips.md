@@ -236,6 +236,10 @@ p <- ggplot(data, aes(x = xvar, y = yvar, color = colorvar, shape = fillvar, lab
 ggplotly(p, tooltip = "anothersample")
 ```
 
+Make a bigger dot and text for legend
+
+DimPlot(dc) + guides(colour = guide_legend(override.aes = list(size = 20))) + theme(legend.text = element_text(size = 24))
+
 # Working with R notebooks
 
 Convert an R notebook to a script
