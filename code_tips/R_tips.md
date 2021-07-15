@@ -51,6 +51,7 @@ Get an xlsx file into R 
 
 ```r
 # say you have an excel spreadsheet with two tabs
+library(readxl)
 tab1data <- read_excel("path/to/myExcel.xlsx", sheet = 1)
 tab2data <- read_excel("path/to/myExcel.xlsx", sheet = 2)
 ```
@@ -91,6 +92,21 @@ sum(df$column < 0.05)
 identical(x, y)
 myspecies <- mouse
 identical(myspecies, "horse")
+```
+
+# String manipulation
+
+Split up strings by a special character
+
+```r
+mystring <- c("cat", "dog/wolf", "bear/sheep")
+mystring <- strsplit(mystring, split = "/")
+# results in a list of lists, e.g.
+## [1] cat
+## [2] [1] dog [2] wolf
+## [3] [1] bear [2] sheep
+# convert back to a normal vector
+mystring <- unlist(strsplit(mystring, split = "/"))
 ```
 
 # Manipulate a dataset
