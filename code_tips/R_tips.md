@@ -47,6 +47,14 @@ if (endsWith(outdir, "/") == FALSE) {
 }
 ```
 
+Get an xlsx file into R 
+
+```r
+# say you have an excel spreadsheet with two tabs
+tab1data <- read_excel("path/to/myExcel.xlsx", sheet = 1)
+tab2data <- read_excel("path/to/myExcel.xlsx", sheet = 2)
+```
+
 # Look at an R object
 
 Call rows and columns: `data[rows, cols]`
