@@ -145,6 +145,11 @@ table[table$col==val,]
 table[table[[col]]==val,]
 ```
 
+Rename NAs as something else
+```r
+d[is.na(d)] <- 0
+```
+
 ## Adding new data to existing data frames
 
 The `mutate` function (`library(dplyr)`) can calculate new column data from existing columns. See [this useful tutorial](https://rstudio-pubs-static.s3.amazonaws.com/116317_e6922e81e72e4e3f83995485ce686c14.html#/5).
