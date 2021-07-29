@@ -112,7 +112,8 @@ mystring <- unlist(strsplit(mystring, split = "/"))
 Copy something to the clipboard
 
 ```r
-clipr::write_clip(spp_cemi)
+clipr::write_clip(object)
+clipr::write_clip("some string")
 ```
 
 if it's a vector it will put one item per line
