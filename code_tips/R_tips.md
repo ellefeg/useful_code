@@ -109,6 +109,14 @@ mystring <- strsplit(mystring, split = "/")
 mystring <- unlist(strsplit(mystring, split = "/"))
 ```
 
+Copy something to the clipboard
+
+```r
+clipr::write_clip(spp_cemi)
+```
+
+if it's a vector it will put one item per line
+
 # Manipulate a dataset
 ```r
 # pull out a smaller part of a table
