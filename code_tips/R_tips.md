@@ -33,6 +33,8 @@ data <- read.delim(myfilepath, header = T, comment.char = "", row.names = 1, str
 
 # convert missing data (NAs) to 0
 data <- data[apply(data, 1, function(x) sum(is.na(x)))  == 0,]
+#OR
+data_1[is.na(data_1)] <- 0
 ```
 
 Getting files out of R:
