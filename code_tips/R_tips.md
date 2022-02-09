@@ -218,6 +218,25 @@ for (i in 1:length(myobjects)) {
   print(l)
 }
 
+Load a bunch of files with the same header, add a unique identifier column, and combine into one file
+
+```{r}
+indir <- "/Volumes/SciDrive/Archive/SCI/SCIAnalysis_control+IVIGtogether/2_output/14_DE/20220203_DE_broadCelltypes/outdir/"
+
+load_data <- function(filepath) {
+  # open the data, fix the date and add a new column
+  my_df <- read.delim(filepath)
+  sampleID <- gsub(".txt", "", basename(filepath)) %>% {gsub("TvC_", "", .)} %>% {gsub("_allmarkers", "", .)}
+  my_df <- my_df %>% add_column(sample = sampleID)
+  #my_df$sample <- sampleID
+  return(my_df)
+}
+
+temp = list.files(path = indir, pattern = "*allmarkers.txt", full.names = TRUE)
+fulldata = lapply(temp, load_data)
+fulldata = as.data.frame(do.call(rbind, fulldata))
+```
+
 # Maths
 
 ```r
