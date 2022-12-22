@@ -1,7 +1,4 @@
----
-title: "R Notebook"
-output: html_notebook
----
+# How to plot multi-panel figures in ggplot
 
 ```{r}
 # load the modules
@@ -15,15 +12,15 @@ library(scales)
 
 ```{r}
 # load the inputs and outputs
-df <- readRDS("/Volumes/SciDrive/Archive/SCI/MND_WT/6_T9+NaiveUMAP/6a_Subset+UMAP+anatomyMarkers/v2/outdir/T9+naive_WithNiceUMAP.RDS")
-Idents(df) <- "lesion_zones4"
+df <- readRDS("/path/to/SeuratObject.RDS")
+Idents(df) <- "myclusters"
 DefaultAssay(df) <- "Spatial"
 
-plot_param <- read.delim("/Volumes/SciDrive/Archive/SCI/MND_WT/1_IntegrateWithSCI/GetPlottingCoordinates/outdir_wholeTissue/plotting_parameters_EachTissueSeparate.txt", row.names = 2)
+plot_param <- read.delim("/path/to/plotting_parameters_EachTissueSeparate.txt", row.names = 2)
 
-outdir <- "/Volumes/SciDrive/Archive/SCI/MND_WT/6_T9+NaiveUMAP/6d_AnatomySignatures/UltraSpecificMarkers/3b_PlotGeneSignatures/outdir_allgenes/"
+outdir <- "/path/to/outdir/"
 
-sig_all <- readRDS("/Volumes/SciDrive/Archive/SCI/MND_WT/6_T9+NaiveUMAP/6d_AnatomySignatures/UltraSpecificMarkers/3a_MakeGeneSignatures/outdir/UltraspecificAnatomySignatures_all.RDS")
+sig_all <- readRDS("/path/to/genesignatures.RDS")
 ```
 
 # calculate gene signature scores
